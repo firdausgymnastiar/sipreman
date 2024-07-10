@@ -1,0 +1,10 @@
+myenv/
+static/adminlte/
+static/node_modules/
+static/upload/
+requirements.txt
+package.json
+package-lock.json
+LICENSE
+config.py
+.bashrc

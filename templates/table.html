@@ -1,0 +1,93 @@
+{% include 'header.html' %}
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Table Kehadiran</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Lihat Table Kehadiran di Kelas Anda</h3>
+                </div>
+                <div class="card-body">
+                    <div class="card card-info">
+                        <div class="card-body">
+                            <div class="input-group input-group-sm">
+                                <input type="number" class="form-control" placeholder="Masukan Token Kelas Anda"
+                                    id="token">
+                                <span class="input-group-append">
+                                    <button type="button" class="btn btn-info btn-flat" id="goBtn">Go!</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: none;" id="detail">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            <i class="fas fa-text-width"></i>
+                                            Detail Kelas
+                                        </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <dl id="data-list">
+                                        </dl>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header ">
+                                        <div class="d-flex justify-content-between">
+                                            <h3 class="card-title">
+                                                <b>Tabel Kehadiran</b>
+                                            </h3>
+                                            <button onclick="exportTableToExcel()" class="btn btn-sm btn-success">
+                                                <i class="fas fa-solid fa-file-export"></i> Export to excell
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body table-responsive p-0">
+                                        <table class="table table-bordered table-striped" id="data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 10px">No</th>
+                                                    <th>NIM</th>
+                                                    <th>Nama Lengkap</th>
+                                                    <th>Verifikasi Wajah</th>
+                                                    <th>Verifikasi Ruang Kelas</th>
+                                                    <th>Waktu Masuk</th>
+                                                    <th style="width: 40px">Keterangan</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overlay" id="overlay" style="display: none;">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="{{ url_for('static', filename='js/xlsx.full.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/table.js') }}"></script>
+
+{% include 'footer.html' %}

@@ -1,0 +1,67 @@
+{% include 'header.html' %}
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Aktivasi Presensi Kelas</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Aktifkan Presensi Kelas Anda!</h3>
+                </div>
+                <div class="card-body">
+                    <div class="card card-info">
+                        <div class="card-body">
+                            <div class="input-group input-group-sm">
+                                <form role="form" id="formActivate" enctype="multipart/form-data" action="/activateQR"
+                                    method="POST">
+                                    <div class="form-group">
+                                        <label for="token">Token Kelas</label>
+                                        <input type="text" class="form-control" id="token" name="token"
+                                            placeholder="Masukan token kelas">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password Token</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            placeholder="Masukan password kelas">
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Aktifkan kelas!</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: none;" id="qr">
+                        <div class="grid text-center " style="--bs-rows: 2; --bs-columns: 2;">
+                            <div>
+                                <h1 class="text-danger"><b id="text">SCAN QR INI UNTUK AKSES PRESENSI!</b></h1>
+                                <p><b>Attention: QR diupdate setiap 5 detik!</b></p>
+                            </div>
+                            <div class="g-start-2 d-flex justify-content-center" style="grid-row: 2">
+                                <div class="mh-100 mw-100" id="qrcode" style="padding: 20px;
+                                background-color: #fff;
+                                border: 1px solid hsl(0, 0%, 80%);
+                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="overlay" id="overlay" style="display: none;">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="{{ url_for('static', filename='js/qrcode.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/activate.js') }}"></script>
+{% include 'footer.html' %}

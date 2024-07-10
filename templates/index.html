@@ -1,0 +1,43 @@
+{% include 'header.html' %}
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <h5 class="card-header"><b>Dashboard</b></h5>
+            <div class="card-body">
+              <h5 class="card-title"><b>SELAMAT DATANG!</b></h5>
+              <p class="card-text">Sistem Presensi Mandiri (SIPREMAN) adalah sebuah website yang digunakan untuk
+                melakukan presensi secara mandiri oleh mahasiswa dengan menggunakan <i>face recognition</i> dan <i>image
+                  classification.</i></p>
+              <p>Berikut adalah beberapa menu yang ada di website SIPREMAN.</p>
+              <dl class="row">
+                <dt class="col-sm-3">Registrasi Wajah</dt>
+                <dd class="col-sm-9">Digunakan untuk mendaftarkan wajah mahasiswa sebelum melakukan presensi.</dd>
+                <dt class="col-sm-3">Masuk Kelas</dt>
+                <dd class="col-sm-9">Digunakan untuk melakukan presensi pada suatu kelas.</dd>
+                <dt class="col-sm-3">Table Kehadiran</dt>
+                <dd class="col-sm-9">Digunakan untuk melihat detail dan tabel kehadiran dari suatu kelas.</dd>
+                <dt class="col-sm-3">Buat Kelas Baru</dt>
+                <dd class="col-sm-9">Digunakan untuk membuat kelas baru sehingga mendapatkan sebuah token yang akan
+                  digunakan sebagai identitas kelas
+                </dd>
+                <dt class="col-sm-3">Aktifkan Presensi Kelas</dt>
+                <dd class="col-sm-9">Digunakan untuk mengaktifkan presensi kelas yang telah dibuat sehingga mendapatkan
+                  QR Code kelas yang terus diupdate setiap 5 detik yang akan digunakan sebagai akses presensi
+                  oleh mahasiswa
+                </dd>
+              </dl>
+              <p>Note: mohon isi kuisioner jika anda sudah pernah menggunakan SIPREMAN: <a
+                  href="https://bit.ly/SIPREMANKUIS" target="_blank">KLIK DISINI</a></p>
+              <a class="btn btn-success" data-widget="pushmenu" href="#" role="button">Cek Menu</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'footer.html' %}

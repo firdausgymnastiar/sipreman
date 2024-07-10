@@ -1,0 +1,104 @@
+{% include 'header.html' %}
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Masuk Kelas</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Verifikasi Diri Anda Untuk Masuk Kelas</h3>
+                </div>
+                <form role="form" id="formLogin" enctype="multipart/form-data" action="/loginkelas" method="POST">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="tokenKelas">Token Kelas</label>
+                            <input type="number" class="form-control" id="tokenKelas" name="token"
+                                placeholder="Masukan Token Kelas" />
+                            <button type="button" class="btn btn-success btn-sm mt-2" id="validateTokenBtn">
+                                Validate Token
+                            </button>
+                        </div>
+                        <div id="sectionWajah" class="form-group">
+                            <label for="gambarWajah">Gambar Wajah</label>
+                            <br />
+                            <button id="cameraButton" style="display: block" type="button"
+                                class="btn btn-primary btn-sm d-grid gap-2 d-md-block" disabled>
+                                Buka Camera
+                            </button>
+                            <input type="file" class="form-control" accept="image/*" capture="camera" id="gambarWajah"
+                                name="gambarWajah" placeholder="Masukan gambar Wajah Anda" style="display: none" />
+                            <img id="preview" style="max-width: 300px; max-height: 300px; display: none" />
+                            <br />
+                            <button id="ulangiCamera" style="display: none" type="button"
+                                class="btn btn-primary btn-sm d-grid gap-2 d-md-block" disabled>
+                                Ulangi
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm mt-2" id="validateWajahBtn"
+                                style="display: none" disabled>
+                                Validate Gambar Wajah
+                            </button>
+                        </div>
+                        <div id="sectionKelas" class="form-group">
+                            <label for="gambarKelas">Gambar Kelas</label>
+                            <br />
+                            <p>
+                                Catatan: gambar harus berisi bagian depan kelas(seperti papan
+                                tulis, dosen, meja dose, dll)
+                            </p>
+                            <button id="cameraButton2" style="display: block" type="button"
+                                class="btn btn-primary btn-sm d-grid gap-2 d-md-block" disabled>
+                                Buka Camera
+                            </button>
+                            <br />
+
+                            <input type="file" class="form-control" accept="image/*" capture="camera" id="gambarKelas"
+                                name="gambarKelas" placeholder="Masukan gambar Kelas Anda" style="display: none" />
+                            <img id="preview2" style="max-width: 300px; max-height: 300px; display: none" />
+                            <br />
+
+                            <button id="ulangiCamera2" style="display: none" type="button"
+                                class="btn btn-primary btn-sm d-grid gap-2 d-md-block" disabled>
+                                Ulangi
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm mt-2" id="validateKelasBtn"
+                                style="display: none" disabled>
+                                Validate Gambar Kelas
+                            </button>
+                        </div>
+                        <div id="sectionQR" class="form-group">
+                            <label for="scanQR">Scan QR Kelas</label>
+                            <br />
+                            <button id="cameraButton3" style="display: block" type="button"
+                                class="btn btn-primary btn-sm d-grid gap-2 d-md-block" disabled>
+                                Buka Camera
+                            </button>
+                            <div id="reader" style="display: none"></div>
+                        </div>
+                    </div>
+                    <div id="sectionSubmit" class="card-footer">
+                        <button type="submit" class="btn btn-success" id="submitButton" style="display: none" disabled>
+                            <span id="submitText">Submit</span>
+                        </button>
+                    </div>
+                    <div class="overlay" id="overlay" style="display: none">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+<script src="{{ url_for('static', filename='js/tf.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/teachablemachine-image.min.js') }}"></script>
+<script src="{{ url_for ('static', filename='node_modules/html5-qrcode/html5-qrcode.min.js') }}"></script>
+{% include 'footer.html' %}

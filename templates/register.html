@@ -1,0 +1,76 @@
+{% include 'header.html' %}
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Registrasi Wajah</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Registrasi Wajah Anda</h3>
+                </div>
+                <form role="form" id="formRegister" action="/registerwajah" method="POST">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="emailAddress">Alamat Email</label>
+                            <input type="email" class="form-control" id="emailAddress" name="email"
+                                placeholder="Masukan alamat email">
+                        </div>
+                        <div class="form-group">
+                            <label for="fullName">Nama lengkap</label>
+                            <input type="text" class="form-control" id="fullName" name="nama"
+                                placeholder="Masukan nama lengkap">
+                        </div>
+                        <div class="form-group">
+                            <label for="nim">NIM</label>
+                            <input type="text" class="form-control" id="nim" name="nim" placeholder="Masukan NIM">
+                        </div>
+                        <div class="form-group">
+                            <label for="programStudi">Program Studi</label>
+                            <input type="text" class="form-control" id="programStudi" name="prodi"
+                                placeholder="Masukan Program Studi">
+                        </div>
+                        <div class="form-group">
+                            <label for="angkatan">Angkatan</label>
+                            <input type="number" class="form-control" id="angkatan" name="angkatan"
+                                placeholder="Masukan Angkatan">
+                        </div>
+                        <div class="form-group">
+                            <label for="gambarWajah">Gambar Wajah</label>
+                            <br>
+                            <button id="cameraButton" type="button"
+                                class="btn btn-primary btn-sm d-grid gap-2 d-md-block">
+                                Buka Camera
+                            </button>
+                            <br>
+                            <input type="file" class="form-control" accept="image/*" capture="camera" id="gambarWajah"
+                                name="gambarWajah" placeholder="Masukan gambar Wajah Anda" style="display: none;">
+                            <img id="preview" style="max-width: 300px; max-height: 300px;" style="display: none;">
+                            <br>
+                            <button id="ulangiCamera" style="display: none;" type="button"
+                                class="btn btn-primary btn-sm d-grid gap-2 d-md-block">Ulangi</button>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                    <div class="overlay" id="overlay" style="display: none;">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+
+{% include 'footer.html' %}

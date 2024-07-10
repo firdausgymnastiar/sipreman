@@ -1,0 +1,83 @@
+<div>Teachable Machine Image Model</div>
+<input type="file" id="image-input" accept="image/*">
+<button type="button" onclick="loadImage()">Process Image</button>
+<div id="label-container"></div>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+<script>
+    // More API functions here:
+    // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+    // The link to your model provided by Teachable Machine export panel
+    const URL = "https://teachablemachine.withgoogle.com/models/6XETKyWdl/";
+
+    let model, labelContainer, maxPredictions;
+
+    // Load the image model
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        // Load the model and metadata
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        // console.log(`jumlah adalah ${maxPredictions}`)
+        // labelContainer = document.getElementById("label-container");
+        // for (let i = 0; i < maxPredictions; i++) { // and class labels
+        //     labelContainer.appendChild(document.createElement("div"));
+        // }
+    }
+
+    // Function to handle image selection and prediction
+    function loadImage() {
+        const imageInput = document.getElementById("image-input");
+        const file = imageInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const image = new Image();
+                image.onload = async function () {
+                    predict(image);
+                };
+                image.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        } else {
+            console.error("Please select an image file");
+        }
+    }
+
+    // Run the image through the model and display the prediction with highest probability
+    async function predict(image) {
+        const prediction = await model.predict(image);
+        let topPrediction = {
+            className: "",
+            probability: 0
+        };
+        for (let i = 0; i < maxPredictions; i++) {
+            if (prediction[i].probability > topPrediction.probability) {
+                topPrediction = {
+                    className: prediction[i].className,
+                    probability: prediction[i].probability
+                };
+            }
+            // const classPrediction =
+            //     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            // labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+
+        // Display an alert with the prediction with highest probability
+        if (topPrediction.className === "Classroom") {
+            alert(`Anda sedang di classroom dengan nilai ${topPrediction.probability}%`);
+        } else {
+            alert(`Anda tidak sedang di classroom nilai ${topPrediction.probability}%`);
+        }
+
+        // Display an alert with the prediction with highest probability
+        // alert(`Most likely prediction: ${topPrediction.className} with probability: ${topPrediction.probability.toFixed(2)}`);
+    }
+
+    init();
+</script>

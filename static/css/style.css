@@ -1,0 +1,28 @@
+/* CSS untuk overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* warna latar belakang dengan opasitas */
+  display: none;
+  /* secara default tersembunyi */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* CSS untuk spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* #ulangiCamera,
+#ulangiCamera2,
+#validateWajahBtn,
+#validateKelasBtn {
+  display: none;
+} */
